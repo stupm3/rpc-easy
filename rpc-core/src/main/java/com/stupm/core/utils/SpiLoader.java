@@ -26,14 +26,6 @@ public class SpiLoader {
 
     private static final String[] SCAN_DIRS = {RPC_SYSTEM_SPI_DIR, RPC_CUSTOM_SPI_DIR};
 
-    private static final List<Class<?>> LOAD_CLASS_LIST = Arrays.asList(Serializer.class);
-
-    private static void loadAll(){
-        log.info("加载所有SPI");
-        for(Class<?> clazz : LOAD_CLASS_LIST){
-            load(clazz);
-        }
-    }
 
     public static Map<String , Class<?>> load(Class<?> clazz){
         log.info("加载类型为:{}的SPI",clazz.getName());

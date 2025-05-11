@@ -42,7 +42,6 @@ public class FailOverTolerantStrategy implements TolerantStrategy {
                 return response;
             } catch (Exception ex) {
                 removeDeadNode(service , services);
-                continue;
             }
         }
         throw new RuntimeException(e);

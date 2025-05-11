@@ -30,6 +30,7 @@ public class ZookeeperRegistry implements Registry {
 
     private static final String ZK_ROOT_PATH = "/rpc/zk";
 
+
     @Override
     public void init(RegistryConfig registryConfig) {
         client = CuratorFrameworkFactory
@@ -101,7 +102,6 @@ public class ZookeeperRegistry implements Registry {
         if(serviceMetaInfos != null){
             return serviceMetaInfos;
         }
-
         try{
             Collection<ServiceInstance<ServiceMetaInfo>> serviceInstanceList = serviceDiscovery.queryForInstances(serviceKey);
 

@@ -11,7 +11,13 @@ import com.stupm.core.registry.Registry;
 import com.stupm.core.registry.RegistryFactory;
 import com.stupm.core.server.HttpServer;
 import com.stupm.core.server.http.VertxHttpServer;
+import com.stupm.core.server.tcp.NettyRpcServer;
 import com.stupm.core.server.tcp.VertxTcpServer;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class ProviderStarter {
     public static void main(String[] args) {
@@ -34,8 +40,10 @@ public class ProviderStarter {
             throw new RuntimeException(e);
         }
 
-        VertxTcpServer httpServer = new VertxTcpServer();
-        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+        NettyRpcServer nettyRpcServer = new NettyRpcServer(RpcApplication.getRpcConfig().getServerPort());
+
+//        VertxTcpServer httpServer = new VertxTcpServer();
+//        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
 
 

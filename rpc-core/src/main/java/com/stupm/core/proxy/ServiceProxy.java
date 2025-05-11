@@ -15,8 +15,8 @@ import com.stupm.core.model.RpcResponse;
 import com.stupm.core.model.ServiceMetaInfo;
 import com.stupm.core.registry.Registry;
 import com.stupm.core.registry.RegistryFactory;
-import com.stupm.core.serializer.Serializer;
-import com.stupm.core.serializer.SerializerFactory;
+
+import com.stupm.core.server.tcp.NettyRpcClient;
 import com.stupm.core.server.tcp.VertxTcpClient;
 
 import java.io.IOException;
@@ -52,11 +52,11 @@ public class ServiceProxy implements InvocationHandler {
             requestParams.put("methodName" , rpcRequest.getMethodName());
             ServiceMetaInfo service = loadBalancer.select(requestParams, serviceMetaInfos);
 
-
         RpcResponse rpcResponse = null;
         try {
             RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
             rpcResponse = retryStrategy.doRetry(() ->
+//                    NettyRpcClient.doRequest(rpcRequest , service)
                     VertxTcpClient.doRequest(rpcRequest, service)
             );
         } catch (Exception e) {

@@ -20,7 +20,7 @@ public class VertxTcpServer implements HttpServer {
             if(result.succeeded()) {
                 System.out.println("Server started on port " + port);
             }else{
-                System.err.println("Failed to start server");
+                System.err.println("Failed to start server" + result.cause());
             }
         });
     }

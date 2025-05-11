@@ -20,7 +20,7 @@ public class FixedIntervalRetryStrategy implements RetryStrategy {
 
                     @Override
                     public <V> void onRetry(Attempt<V> attempt) {
-                        log.info("retry times :{}", attempt.getAttemptNumber());
+                        log.info("retry times:{}", attempt.getAttemptNumber());
                     }
                 })
                 .build();

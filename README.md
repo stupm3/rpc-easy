@@ -1,4 +1,4 @@
-基于Vertx Zookeeper 实现的简单rpc框架
+基于Netty Zookeeper 实现的简单rpc框架
 实现Kryo,JDK,JSON,Hessian等序列化器
 实现轮询，一致性哈希，随机三种负载均衡器
 实现固定间隔重试机制
